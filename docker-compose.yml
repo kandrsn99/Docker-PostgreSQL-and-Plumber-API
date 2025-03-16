@@ -1,0 +1,50 @@
+# Declare services
+services:
+  # Database
+  postgresql_proxy:
+    # Pull latest and greatest image
+    image: postgres:latest
+    restart: always
+    build: ./
+    container_name: running_postgresql
+    # Declare environment variables 
+    environment:
+      POSTGRES_USER: NAME
+    #  POSTGRES_HOST: LOCALHOST
+      POSTGRES_DB: NAME
+      POSTGRES_PASSWORD: PASSWORD
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    # Open and map to default 5432
+    ports:
+      - 5432:5432
+    networks:
+      - postgres-network
+  pgadmin:
+    # Pull latest and greatest image
+    image: dpage/pgadmin4:latest
+    restart: always
+    container_name: running_pg_admin
+    # Declare environment variables
+    environment:
+      PGADMIN_DEFAULT_EMAIL: administrator
+      PGADMIN_DEFAULT_PASSWORD: password123
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    # Map the ports, use ip:5050 or localhost:5050 to access administration page (remember mapping 5050 to 80).
+    ports:
+      - 5050:80
+    networks:
+      - postgres-network
+    depends_on:
+      - postgresql_proxy
+# Interal Networks
+networks:
+  postgres-network:
+    driver: bridge
+# Storage
+volumes:
+  postgres:
+    driver: local
+  pgadmin:
+    driver: local
