@@ -36,9 +36,6 @@ Now, we may mosey into the running container and run commands in the PostgreSQL 
 > docker exec -it running_postgresql bash\
 > psql -U POSTGRES_USER (environment variable reference) POSTGRES_DB (environment variable reference)
 
-Otherwise, we may do this on a nice graphica interface with pgadmin on the local host. You will access it via http://localhost:5050 or htttp://address:5050 and begin adding a new server. 
-> Add Server Name: POSTGRES_DB (environment variable reference)
-
 Then we need the host name or internet protocol address of our PostgreSQL environment.
 
 > docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' running_postgresql
