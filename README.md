@@ -1,4 +1,4 @@
-# Docker-PostgreSQL
+# Docker-PostgreSQL-and-Plumbing
 
 This is a sample of a PostgreSQL database that is launchable with Docker. Docker makes it easy to deploy executables on a server host with a Plumber API.
 
