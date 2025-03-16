@@ -12,10 +12,10 @@ library(DBI)
 library(pool)
 library(ggplot2)
 # Declare Database Variables
-dbname <- "DBNAME" # Same as your environment variable for the DB
+dbname <- "NAME" # Same as your environment variable for the DB
 host <- "ADDRESS" # Internal host IP for postgresql container
 port <- 5432 # Internel host IP port for postgresql
-user <- "DBUSER" # Same as your environment variable for the DB
+user <- "NAME" # Same as your environment variable for the DB
 password <- "PWD" # Same as your environment variable for the DB
 # Initialize pooling of database connections, reduce latency during high loads.
 pool <- dbPool(
