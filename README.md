@@ -64,4 +64,6 @@ And of course, we spool both containers up for nginx and plumber proxies
 > docker compose build nginx_proxy\
 > docker compose up nginx_proxy -d
 
+You may test your API on https://localhost/__docs__/ or http://address:8000/__docs__/ at your discretion.
+
 You may read about the official PostgreSQL docker image documentation here https://hub.docker.com/_/postgres/ and the official rocker image https://rocker-project.org/images/versioned/rstudio.html which was modified for this repository.
