@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS employees
 /*
     Insert some values into that database table
 */
-COPY employees(first_name, last_name, vehicle) 
+COPY employees (first_name, last_name, vehicle) 
     FROM './vehiclestable.csv'
     DELIMITER ','
     CSV HEADER;
