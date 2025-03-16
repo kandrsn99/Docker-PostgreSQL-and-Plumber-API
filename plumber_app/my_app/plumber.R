@@ -16,7 +16,7 @@ dbname <- "NAME" # Same as your environment variable for the DB
 host <- "ADDRESS" # Internal host IP for postgresql container
 port <- 5432 # Internel host IP port for postgresql
 user <- "NAME" # Same as your environment variable for the DB
-password <- "PWD" # Same as your environment variable for the DB
+password <- "PASSWORD" # Same as your environment variable for the DB
 # Initialize pooling of database connections, reduce latency during high loads.
 pool <- dbPool(
   # Establish the connection
