@@ -5,7 +5,7 @@ services:
     # Pull latest and greatest image
     image: postgres:latest
     restart: always
-    build: ./
+    build: ./postgresql_database
     container_name: running_postgresql
     # Declare environment variables 
     environment:
@@ -20,24 +20,36 @@ services:
       - 5432:5432
     networks:
       - postgres-network
-  pgadmin:
-    # Pull latest and greatest image
-    image: dpage/pgadmin4:latest
+  # Plumber API
+  plumber_proxy:
+    # Build Dockerfile
+    build: ./plumber_app
+    # Name of the container
+    container_name: running_plumber
     restart: always
-    container_name: running_pg_admin
-    # Declare environment variables
-    environment:
-      PGADMIN_DEFAULT_EMAIL: administrator
-      PGADMIN_DEFAULT_PASSWORD: password123
-    volumes:
-       - pgadmin:/var/lib/pgadmin
-    # Map the ports, use ip:5050 or localhost:5050 to access administration page (remember mapping 5050 to 80).
+    # Map the ports where R Shiny will run on your machines infrastructure.
     ports:
-      - 5050:80
+      - 8000:8000
     networks:
       - postgres-network
     depends_on:
       - postgresql_proxy
+  # Nginx
+  nginx_proxy:
+    # Typically, we may refer to an image to pull from here. This is a sample, so there is none.
+    # image: image_name
+    # Build Dockerfile
+    build: ./nginx_app
+    # Name of the container
+    container_name: running_proxy
+    restart: always
+    # Mapping ports 80 and 443 on your machines infrastructure.
+    # Typically, your port for transfer control protocol is 22/tcp is SSH, 80/tcp is HTTP, and 443/tcp is HTTPS.
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - postgres-network
 # Interal Networks
 networks:
   postgres-network:
