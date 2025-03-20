@@ -215,6 +215,7 @@ function(first, last, new_value, res) {
 }
 #* Delete an entry in a table.
 #* @response 200 Deleted
+#* @response 400 Bad Request
 #* @param first:str* first
 #* @param last:str* last
 #* @delete /first/last
