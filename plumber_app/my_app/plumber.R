@@ -84,12 +84,10 @@ function(query, res) {
       error = "Connection: pooled connection isn't valid!"
     ))
   }
-  # Safely quote the name to prevent SQL injection
-  safe_name <- dbQuoteString(conn, query)
-  # Construct the query using glue and safely quoted variables
-  safe_query <- glue("SELECT * FROM employees WHERE first_name = {safe_name} OR last_name = {safe_name}")
-  # Execute the query
-  information <- dbGetQuery(conn, as.character(safe_query))
+  # Prepare and execute the query using parameterized query
+  query_statement <- "SELECT * FROM employees WHERE first_name = $1 OR last_name = $1;"
+  # Get information
+  information <- dbGetQuery(conn, query_statement, params = list(query))
   # Return the connection
   pool::poolReturn(conn)
   # Error handling
