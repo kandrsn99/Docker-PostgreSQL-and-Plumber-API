@@ -250,7 +250,7 @@ function(first, last, res) {
     # Return
     return(list(
       success = TRUE,
-      message = paste0("Record with ", first, " deleted")
+      message = paste0("Record with ", first, " deleted.")
     ))
   } else {
     # Pass parameters correctly by freeing up the object.
