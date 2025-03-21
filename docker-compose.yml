@@ -27,7 +27,7 @@ services:
     # Name of the container
     container_name: running_plumber
     restart: always
-    # Map the ports where R Shiny will run on your machines infrastructure.
+    # Map the ports where R Plumber will run on your machines infrastructure.
     ports:
       - 8000:8000
     networks:
