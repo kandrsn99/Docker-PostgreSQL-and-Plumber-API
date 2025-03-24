@@ -12,6 +12,6 @@ CREATE TABLE IF NOT EXISTS employees
     Insert some values into that database table
 */
 COPY employees (first_name, last_name, vehicle) 
-    FROM './vehiclestable.csv'
-    DELIMITER ','
-    CSV HEADER;
+FROM '/docker-entrypoint-initdb.d/names.csv'
+DELIMITER ','
+CSV HEADER;
