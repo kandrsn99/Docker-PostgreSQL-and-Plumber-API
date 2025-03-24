@@ -1,3 +1,5 @@
+# Start the build process for an initial table.
+FROM postgres:latest
 # Add files properly
 ADD ./schema.sql /docker-entrypoint-initdb.d
 # Make sure proper port is open for PostgreSQL environment
