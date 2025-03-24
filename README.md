@@ -38,7 +38,7 @@ Now, we may mosey into the running container and run commands in the PostgreSQL 
 
 Please note that you must enter the running container if you wish to change the port with which the PostgreSQL environment will run.
 > docker exec -it running_postgresql bash\
-> cd var/lib/postgresql/data
+> cd /var/lib/postgresql/data
 
 At which point you will open the postgres.conf file located in that directory with the text editor in that system. You may learn more about postgres.conf here at https://www.postgresql.org/docs/14/runtime-config-connection.html#RUNTIME-CONFIG-CONNECTION-SETTINGS
 > #port = 5432\
