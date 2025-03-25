@@ -116,7 +116,11 @@ function(first, last, vehicle, res) {
   conn <- pool::poolCheckout(pool)
   # Error handling
   if (dbIsValid(conn) == FALSE) {
+    # Return the connection
+    pool::poolReturn(conn)
+    # Error code
     res$status <- 500
+    # Error message
     return(list(
       success = FALSE,
       error = "Connection: pooled connection isn't valid!"
@@ -148,7 +152,9 @@ function(first, last, vehicle, res) {
     dbClearResult(result)
     # Return the connection
     pool::poolReturn(conn)
+    # Error code
     res$status <- 400
+    # Error message
     return(list(
       success = FALSE,
       error = "Bad Request: 'query' must be a a valid name."
@@ -168,6 +174,8 @@ function(first, last, new_value, res) {
   conn <- pool::poolCheckout(pool)
   # Error handling
   if (dbIsValid(conn) == FALSE) {
+    # Return the connection
+    pool::poolReturn(conn)
     # Code
     res$status <- 500
     # Return
@@ -223,6 +231,8 @@ function(first, last, res) {
   conn <- pool::poolCheckout(pool)
   # Error handling
   if (dbIsValid(conn) == FALSE) {
+    # Return the connection
+    pool::poolReturn(conn)
     # Code
     res$status <- 500
     # Return
@@ -257,7 +267,9 @@ function(first, last, res) {
     dbClearResult(result)
     # Return the connection
     pool::poolReturn(conn)
+    # Code
     res$status <- 400
+    # Message
     return(list(
       success = FALSE,
       error = "Bad Request: first and last name must be valid."
@@ -274,6 +286,8 @@ function(res) {
   conn <- pool::poolCheckout(pool)
   # Error handling
   if (dbIsValid(conn) == FALSE) {
+    # Return the connection
+    pool::poolReturn(conn)
     # Code
     res$status <- 500
     # Return
