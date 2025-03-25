@@ -51,7 +51,9 @@ function(res) {
   pool::poolReturn(conn)
   # Error handling
   if (dbIsValid(conn) == FALSE) {
+    # Code
     res$status <- 500
+    # Message
     return(list(
       success = FALSE,
       error = "Connection: pooled connection isn't valid!"
@@ -78,7 +80,11 @@ function(query, res) {
   conn <- pool::poolCheckout(pool)
   # Error handling
   if (dbIsValid(conn) == FALSE) {
+    # Return the connection
+    pool::poolReturn(conn)
+    # Code
     res$status <- 500
+    # Message
     return(list(
       success = FALSE,
       error = "Connection: pooled connection isn't valid!"
