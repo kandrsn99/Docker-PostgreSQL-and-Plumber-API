@@ -13,4 +13,4 @@ COPY my_app/ /srv/plumber-server/
 # Expose the proper port.
 EXPOSE 8000
 # Run script for plumber server
-ENTRYPOINT ["R", "-e", "pr <- plumber::plumb('/srv/plumber-server/plumber.R'); pr$run(host='0.0.0.0', port=8000)"]
+ENTRYPOINT ["R", "-e", "pr <- plumber::plumb('/srv/plumber-server/plumber.R'); pr$run(host='0.0.0.0', port=8000, swagger = TRUE)"]
