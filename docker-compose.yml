@@ -2,7 +2,7 @@
 services:
   # Database
   postgresql_proxy:
-    # Pull latest and greatest image, but we will do  this in the build.
+    # Pull latest and greatest image, but we will do this in the build.
     # image: postgres:latest
     restart: always
     build: ./postgresql_database
