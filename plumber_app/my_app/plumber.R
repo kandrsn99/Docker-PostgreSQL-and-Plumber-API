@@ -73,7 +73,7 @@ function(res) {
 #* @response 200 Success
 #* @response 400 Bad Request
 #* @param query:str* search term
-#* @post /name
+#* @get /name
 #* The purpose of this end-point is to get a specific entry in a table upon post.
 function(query, res) {
   # Create a pooled connection
@@ -282,7 +282,6 @@ function(first, last, res) {
     ))
   }
 }
-
 #* Return data of a table.
 #* @get /information
 #* @response 200 Success
