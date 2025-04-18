@@ -30,7 +30,6 @@ pool <- dbPool(
     maxSize = 1000 # Maximum number of connections
 )
 
-
 #* @apiTitle Plumber Example API
 #* @apiDescription This API is written in the R language to interface with a sample PostgreSQL database and initialized table provided in CSV format.
 #* @apiContact list(name = "https://github.com/kandrsn99/Docker-PostgreSQL-and-Plumber-API", url = "https://github.com/kandrsn99/Docker-PostgreSQL-and-Plumber-API")
