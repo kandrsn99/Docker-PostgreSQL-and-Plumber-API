@@ -59,5 +59,3 @@ networks:
 volumes:
   postgres:
     driver: local
-  pgadmin:
-    driver: local
