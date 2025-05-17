@@ -10,7 +10,7 @@ RUN install2.r --error --deps TRUE \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 # Copy everything over where it is supposed to go for the website R Shiny.
 COPY my_app/ /srv/plumber-server/
-# Expose the proper port.
+# Expose the proper port. Please note that we supersede the firewall and open this port. 
 EXPOSE 8000
 # Run script for plumber server
 ENTRYPOINT ["R", "-e", "pr <- plumber::plumb('/srv/plumber-server/plumber.R'); pr$run(host='0.0.0.0', port=8000, swagger = TRUE)"]
